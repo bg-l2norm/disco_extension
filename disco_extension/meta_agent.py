@@ -17,7 +17,7 @@ from disco_rl.environments import base as base_env
 
 
 def unroll_jittable_actor(
-    params: types.Params,
+    params: chex.ArrayTree,  # <--- CHANGED (was types.Params)
     actor_state: Any,
     ts: types.EnvironmentTimestep,
     env_state: Any,
@@ -149,7 +149,7 @@ class MetaTrainAgent:
 
 
 def calculate_meta_gradient(
-    update_rule_params: types.MetaParams,
+    update_rule_params: chex.ArrayTree, # <--- CHANGED (was types.MetaParams)
     agent_state: MetaTrainState,
     train_rollouts: types.ActorRollout,
     valid_rollout: types.ActorRollout,
@@ -192,7 +192,7 @@ def calculate_meta_gradient(
         ), metrics
 
     def _outer_loss(
-        update_rule_params: types.MetaParams,
+        update_rule_params: chex.ArrayTree, # <--- CHANGED (was types.MetaParams)
         agent_state: MetaTrainState,
         train_rollouts: types.ActorRollout,
         valid_rollout: types.ActorRollout,
@@ -306,7 +306,7 @@ def calculate_meta_gradient(
 
 
 def meta_update(
-    update_rule_params: types.MetaParams,
+    update_rule_params: chex.ArrayTree, # <--- CHANGED (was types.MetaParams)
     meta_opt_state: optax.OptState,
     agents_states: List[MetaTrainState],
     agents: List[MetaTrainAgent],
