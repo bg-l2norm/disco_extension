@@ -5,7 +5,7 @@ from .utils import get_default_agent_config
 from .envs import make_catch_env
 from .train_meta import run_meta_training
 from .train_eval import train_standard_agent
-from .types import MetaTrainState
+from .meta_agent import MetaTrainState
 
 __all__ = [
     "load_disco_weights",
